@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.assignment.ui.home.MainActivityVM" />
+    </data>
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_back"
+        tools:context=".ui.home.MainActivity">
+
+        <RelativeLayout
+            android:id="@+id/relToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_option"
+                android:contentDescription="@string/app_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="serif"
+                android:text="@string/movies"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_search" />
+
+        </RelativeLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/relToolbar"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollMain"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relToolbar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_6sdp">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_140sdp" />
+
+                <TextView
+                    android:id="@+id/txtNowShowingTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/slider"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:fontFamily="serif"
+                    android:text="@string/now_showing"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcNowShowing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/txtNowShowingTitle"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3"
+                    tools:listitem="@layout/row_now_showing" />
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</layout>

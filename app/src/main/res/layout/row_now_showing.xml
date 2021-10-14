@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="callback"
+            type="com.example.assignment.di.base.adapter.SimpleRecyclerViewAdapter.SimpleCallback" />
+
+        <variable
+            name="holder"
+            type="com.example.assignment.di.base.adapter.SimpleRecyclerViewAdapter.SimpleViewHolder" />
+
+        <variable
+            name="bean"
+            type="com.example.assignment.data.beans.Result" />
+    </data>
+
+    <com.skydoves.transformationlayout.TransformationLayout
+        android:id="@+id/transformLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="@{(v)->callback.onItemClick(v,bean,holder.position)}"
+        app:transformation_direction="auto"
+        app:transformation_duration="450"
+        app:transformation_fadeMode="in"
+        app:transformation_fitMode="auto"
+        app:transformation_pathMode="arc">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_110sdp"
+            android:clipToPadding="true"
+            app:cardBackgroundColor="#E7EEEE"
+            app:cardCornerRadius="@dimen/_2sdp"
+            app:cardElevation="@dimen/_10sdp">
+
+
+            <ImageView
+                android:id="@+id/imgBanner"
+                image_url="@{`https://image.tmdb.org/t/p/w500//`+bean.backdropPath}"
+                placeholder="@{@drawable/place_holder}"
+                resize="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name" />
+        </androidx.cardview.widget.CardView>
+
+    </com.skydoves.transformationlayout.TransformationLayout>
+
+</layout>

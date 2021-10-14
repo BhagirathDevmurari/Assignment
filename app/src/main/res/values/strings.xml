@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Assignment</string>
+
+    <!--Error handle-->
+    <string name="error_found">Error</string>
+    <string name="network_error">Network error</string>
+    <string name="plz_wait">Please wait</string>
+    <string name="movies">Movies</string>
+    <string name="now_showing">Now Showing</string>
+    <string name="book_now">Book Now</string>
+    <string name="synopsis">Synopsis</string>
+
+</resources>
