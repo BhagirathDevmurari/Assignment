@@ -1,7 +1,11 @@
 package com.example.assignment.ui.detail
 
-import android.content.Context
-import android.content.Intent
+import android.os.Handler
+import android.os.Looper
+import android.view.Gravity
+import android.view.View
+import androidx.transition.Slide
+import androidx.transition.TransitionManager
 import com.example.assignment.R
 import com.example.assignment.data.beans.Result
 import com.example.assignment.databinding.ActivityDetailBinding
@@ -14,6 +18,7 @@ class DetailActivity : AppActivity<ActivityDetailBinding, DetailActivityVM>() {
     }
 
     override fun subscribeToEvents(vm: DetailActivityVM?) {
+        val slide = Slide()
         val data = intent.extras?.get("data") as Result
         if (data.voteAverage != 0.0) {
             data.ratting = ((data.voteAverage!! * 5) / 10).toFloat()
@@ -28,6 +33,18 @@ class DetailActivity : AppActivity<ActivityDetailBinding, DetailActivityVM>() {
                 }
             }
         })
+
+        Handler(Looper.myLooper()!!).postDelayed({
+            slide.slideEdge = Gravity.END;
+            TransitionManager.beginDelayedTransition(binding.cnsAnimate, slide);
+            binding.txtMoovieName.visibility = View.VISIBLE;
+            binding.txtReleaseDate.visibility = View.VISIBLE;
+            binding.textView.visibility = View.VISIBLE;
+            binding.textView2.visibility = View.VISIBLE;
+            binding.rating.visibility = View.VISIBLE;
+            TransitionManager.beginDelayedTransition(binding.relativeLayout, slide);
+            binding.relativeLayout.visibility = View.VISIBLE;
+        }, 500)
 
     }
 }

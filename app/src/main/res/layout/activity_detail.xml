@@ -62,120 +62,151 @@
         </RelativeLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/crnMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/relToolbar">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/crdImageHolder"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_130sdp"
-                android:layout_margin="@dimen/_16sdp"
-                android:clipToPadding="true"
-                app:cardCornerRadius="@dimen/_2sdp"
-                app:cardUseCompatPadding="true"
-                app:elevation="@dimen/_8sdp"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cnsAnimate"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/guidBottom"
-                app:layout_constraintEnd_toStartOf="@+id/guidCenter"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    image_url="@{`https://image.tmdb.org/t/p/w500//`+bean.backdropPath}"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/place_holder" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidInside"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.43" />
 
 
-            </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/crdImageHolder"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_130sdp"
+                    android:layout_margin="@dimen/_16sdp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="@dimen/_2sdp"
+                    app:cardUseCompatPadding="true"
+                    app:elevation="@dimen/_8sdp"
+                    app:layout_constraintBottom_toTopOf="@+id/guidBottom"
+                    app:layout_constraintEnd_toStartOf="@+id/guidInside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        image_url="@{`https://image.tmdb.org/t/p/w500//`+bean.backdropPath}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/place_holder" />
 
 
-            <TextView
-                android:id="@+id/txtMoovieName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:fontFamily="serif"
-                android:maxLines="2"
-                android:text="@{bean.originalTitle}"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guidCenter"
-                app:layout_constraintTop_toTopOf="@+id/crdImageHolder"
-                tools:text="Org Title" />
+                </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/txtReleaseDate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:fontFamily="serif"
-                android:maxLines="2"
-                android:text="@{bean.title}"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_10sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guidCenter"
-                app:layout_constraintTop_toBottomOf="@+id/txtMoovieName"
-                tools:text="Title" />
+                <TextView
+                    android:id="@+id/txtMoovieName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:fontFamily="serif"
+                    android:maxLines="2"
+                    android:text="@{bean.originalTitle}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidInside"
+                    app:layout_constraintTop_toTopOf="@+id/crdImageHolder"
+                    tools:text="Org Title"
+                    tools:visibility="visible" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:fontFamily="serif"
-                android:maxLines="1"
-                android:text="@{bean.releaseDate}"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_10sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guidCenter"
-                app:layout_constraintTop_toBottomOf="@+id/txtReleaseDate"
-                tools:text="Date" />
+                <TextView
+                    android:id="@+id/txtReleaseDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="serif"
+                    android:maxLines="2"
+                    android:text="@{bean.title}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidInside"
+                    app:layout_constraintTop_toBottomOf="@+id/txtMoovieName"
+                    tools:text="Title"
+                    tools:visibility="visible" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:fontFamily="serif"
-                android:maxLines="1"
-                android:text="@{bean.originalLanguage}"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_10sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guidCenter"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                tools:text="Language" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:fontFamily="serif"
+                    android:maxLines="1"
+                    android:text="@{bean.releaseDate}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidInside"
+                    app:layout_constraintTop_toBottomOf="@+id/txtReleaseDate"
+                    tools:text="Date"
+                    tools:visibility="visible" />
 
-            <RatingBar
-                android:id="@+id/rating"
-                style="@style/Widget.AppCompat.RatingBar.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:rating="@{bean.ratting}"
-                android:stepSize="0.1"
-                android:theme="@style/rattingbar"
-                app:layout_constraintBottom_toBottomOf="@+id/crdImageHolder"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guidCenter"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
-                app:layout_constraintVertical_bias="0.0" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:fontFamily="serif"
+                    android:maxLines="1"
+                    android:text="@{bean.originalLanguage}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidInside"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    tools:text="Language"
+                    tools:visibility="visible" />
+
+                <RatingBar
+                    android:id="@+id/rating"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="@{bean.ratting}"
+                    android:stepSize="0.1"
+                    android:theme="@style/rattingbar"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/crdImageHolder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidInside"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:visibility="visible" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidCenter"
@@ -214,7 +245,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="221dp" />
+                app:layout_constraintGuide_percent="0.34" />
 
 
             <androidx.core.widget.NestedScrollView
@@ -231,7 +262,8 @@
                     android:id="@+id/relativeLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="24sp">
+                    android:layout_marginTop="24sp"
+                    android:visibility="invisible">
 
 
                     <TextView
